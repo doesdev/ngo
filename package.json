@@ -1,6 +1,6 @@
 {
   "name": "ngo",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Run go commands, whether your go env is in place or not",
   "main": "index.js",
   "scripts": {
@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/doesdev/ngo#readme",
   "dependencies": {
-    "decompress": "^4.0.0",
+    "decompress": "doesdev/decompress#86b8777",
     "decompress-targz": "^4.0.0",
     "decompress-unzip": "^4.0.1",
     "execa": "^0.5.0",

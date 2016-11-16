@@ -2,6 +2,8 @@
 
 > Run go commands, whether your go env is in place or not
 
+Will download latest binaries locally if GO isn't already in PATH
+
 ## local install
 
 ```sh
@@ -16,25 +18,30 @@ $ npm install --global ngo
 
 ## api
 
-### ngo - returns promise which resolves to [`execa`](https://github.com/sindresorhus/execa) styled object
+### ngo
+returns promise which resolves to [`execa`](https://github.com/sindresorhus/execa) styled object
 - **arguments** *(Array, arguments to call with `go` command - required)*
 - **options** *(Object - optional)*
   - **useLocal** *(Boolean, use locally downloaded GO binaries - optional)*
   - **env** *(Object, environment vars to set for the GO command - optional)*
   - **goRoot** *(String, GO root path (ex. `/usr/local/go`) - optional)*
   - **goPath** *(String, GO workspace path (ex. `~/work`) - optional)*
+  - **reject** *(Boolean, set to `false` to resolve the promise on stderr instead of rejecting - optional)*
 
-### ngo.init - returns promise that resolves when `ngo` is ready for `cmd`
+### ngo.init
+returns promise that resolves when `ngo` is ready for `cmd`
 - **options** *(Object - optional)*
   - **useLocal** *(Boolean, use locally downloaded GO binaries - optional)*
 
-### ngo.cmd - returns `execa` styled [`child_process`](https://nodejs.org/api/child_process.html#child_process_class_childprocess) instance with promise-cuity
+### ngo.cmd
+returns `execa` styled [`child_process`](https://nodejs.org/api/child_process.html#child_process_class_childprocess) instance with promise-cuity
 - **command** *(String, (ex. 'build') - optional - if ommitted signature is shifted)*
 - **arguments** *(Array, arguments to call with `go` command - optional)*
 - **options** *(Object - optional)*
   - **env** *(Object, environment vars to set for the GO command - optional)*
   - **goRoot** *(String, GO root path (ex. `/usr/local/go`) - optional)*
   - **goPath** *(String, GO workspace path (ex. `~/work`) - optional)*
+  - **reject** *(Boolean, set to `false` to resolve the promise on stderr instead of rejecting - optional)*
 
 ## usage
 
@@ -68,7 +75,7 @@ cmd - returns `execa` styled `child_process` instance
 
 ```js
 let cmd = () => {
-  let child = ngo.cmd(args, {reject: false})
+  let child = ngo.cmd('version', {reject: false})
   child.stdout.pipe(process.stdout)
   // go version go1.7.1 windows/amd64
   child.stderr.pipe(process.stderr)
