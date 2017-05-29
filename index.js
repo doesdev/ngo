@@ -19,13 +19,12 @@ module.exports = (opts = {}) => {
   env.GOARCH = goArch = goArch || env.GOARCH || arch
   env.ngoBin = path.join(goRoot, 'bin', 'go')
   try { env.hasBin = exists(path.join(goRoot, 'bin')) } catch (ex) {}
-  return (cmd, args) => runner(cmd, args, env)
+  return (args, cmdOpts = {}) => runner(args, Object.assign({}, env, cmdOpts))
 }
 
-function runner (cmd, args, env) {
-  if (!cmd) return Promise.reject(new Error(`No GO command specified`))
-  cmd = Array.isArray(cmd) ? cmd : [cmd]
-  args = Array.isArray(args) ? cmd.concat(args) : cmd
+function runner (args, env) {
+  if (!args) return Promise.reject(new Error(`No GO command specified`))
+  args = Array.isArray(args) ? args : [args]
   if (env.hasBin) return execa(env.ngoBin, args, {env})
   return getGo(env.version, env.GOROOT).then(() => {
     env.hasBin = true
