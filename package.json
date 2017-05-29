@@ -32,7 +32,7 @@
   },
   "homepage": "https://github.com/doesdev/ngo#readme",
   "dependencies": {
-    "execa": "^0.5.0",
+    "execa": "^0.6.3",
     "go-bin": "^1.1.0",
     "go-versions": "^1.0.0"
   },
