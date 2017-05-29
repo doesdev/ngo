@@ -55,9 +55,10 @@ $ ngo version
 returns promise that resolves to `execa` style object without the `child_process` goodies
 
 ```js
-const ngo = require('ngo')
+const goOpts = {}
+const ngo = require('ngo')(goOpts)
 
-ngo(['version']).then(console.log).catch(console.error)
+ngo('version').then(console.log).catch(console.error)
 /* {
   stdout: 'go version go1.7.1 windows/amd64',
   stderr: '',
@@ -67,21 +68,6 @@ ngo(['version']).then(console.log).catch(console.error)
   signal: null,
   cmd: 'C:\\Go\\bin\\go version'
 } */
-```
-
-#### alternate syntax
-init - returns promise and must be called before cmd    
-cmd - returns `execa` styled `child_process` instance
-
-```js
-let cmd = () => {
-  let child = ngo.cmd('version', {reject: false})
-  child.stdout.pipe(process.stdout)
-  // go version go1.7.1 windows/amd64
-  child.stderr.pipe(process.stderr)
-  child.catch(console.error)
-}
-ngo.init().then(cmd).catch(console.error)
 ```
 
 ## License
