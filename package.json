@@ -3,8 +3,9 @@
   "version": "1.0.1",
   "description": "Run go commands, whether your go env is in place or not",
   "main": "index.js",
+  "files": ["index.js", "cli.js"],
   "scripts": {
-    "test": "test/test.js"
+    "test": "ava --verbose"
   },
   "bin": {
     "ngo": "cli.js"
@@ -34,5 +35,8 @@
     "execa": "^0.5.0",
     "path-exists": "^3.0.0",
     "xml2js": "^0.4.17"
+  },
+  "devDependencies": {
+    "ava": "^0.19.1"
   }
 }
