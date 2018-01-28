@@ -1,6 +1,6 @@
 {
   "name": "ngo",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Run go commands, whether your go env is in place or not",
   "main": "index.js",
   "files": [
@@ -34,7 +34,7 @@
   "dependencies": {
     "execa": "^0.6.3",
     "go-bin": "^1.1.0",
-    "go-versions": "^1.0.0"
+    "go-versions": "^1.1.0"
   },
   "devDependencies": {
     "ava": "^0.19.1"
