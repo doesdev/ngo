@@ -1,8 +1,8 @@
 # ngo [![NPM version](https://badge.fury.io/js/ngo.svg)](https://npmjs.org/package/ngo)   [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)   [![Dependency Status](https://dependencyci.com/github/doesdev/ngo/badge)](https://dependencyci.com/github/doesdev/ngo)
 
-> Run go commands, whether your GO env is in place or not
+> Run Go commands, whether your Go env is in place or not
 
-Will download latest binaries locally if GO isn't already in PATH
+Will download latest binaries locally if Go isn't already in PATH
 
 ## local install
 
@@ -19,12 +19,12 @@ $ npm install --global ngo
 ## api
 
 ### require('ngo')(opts)
-accepts `opts` as below, returns `ngo` function which executes GO commands
+accepts `opts` as below, returns `ngo` function which executes Go commands
 - **options** *(Object - optional)*
-  - **useLocal** *(Boolean, use locally downloaded GO binaries - optional)*
-  - **env** *(Object, environment vars to set for the GO command - optional)*
-  - **goRoot** *(String, GO root path (ex. `/usr/local/go`) - optional)*
-  - **goPath** *(String, GO workspace path (ex. `~/work`) - optional)*
+  - **useLocal** *(Boolean, use locally downloaded Go binaries - optional)*
+  - **env** *(Object, environment vars to set for the Go command - optional)*
+  - **goRoot** *(String, Go root path (ex. `/usr/local/go`) - optional)*
+  - **goPath** *(String, Go workspace path (ex. `~/work`) - optional)*
 
 ### ngo(arguments, options)
 returns promise which resolves to [`execa`](https://github.com/sindresorhus/execa) styled object

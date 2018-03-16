@@ -1,7 +1,7 @@
 {
   "name": "ngo",
-  "version": "2.1.0",
-  "description": "Run go commands, whether your go env is in place or not",
+  "version": "2.1.1",
+  "description": "Run Go commands, whether your Go env is in place or not",
   "main": "index.js",
   "files": [
     "index.js",
@@ -23,6 +23,8 @@
     "environment",
     "env",
     "cli",
+    "interop",
+    "run",
     "command"
   ],
   "author": "Andrew Carpenter (https://github.com/doesdev)",
@@ -32,11 +34,11 @@
   },
   "homepage": "https://github.com/doesdev/ngo#readme",
   "dependencies": {
-    "execa": "^0.6.3",
+    "execa": "^0.10.0",
     "go-bin": "^1.1.0",
     "go-versions": "^1.1.0"
   },
   "devDependencies": {
-    "ava": "^0.19.1"
+    "ava": "^0.25.0"
   }
 }
