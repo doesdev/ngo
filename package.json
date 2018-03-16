@@ -1,17 +1,19 @@
 {
   "name": "ngo",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "description": "Run Go commands, whether your Go env is in place or not",
   "main": "index.js",
   "files": [
     "index.js",
-    "cli.js"
+    "cli.js",
+    "vendor/gopath"
   ],
   "scripts": {
     "test": "ava --verbose"
   },
   "bin": {
-    "ngo": "cli.js"
+    "ngo": "cli.js",
+    "ngo-update": "cli-update.js"
   },
   "repository": {
     "type": "git",

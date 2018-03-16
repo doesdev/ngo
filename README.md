@@ -25,6 +25,7 @@ accepts `opts` as below, returns `ngo` function which executes Go commands
   - **env** *(Object, environment vars to set for the Go command - optional)*
   - **goRoot** *(String, Go root path (ex. `/usr/local/go`) - optional)*
   - **goPath** *(String, Go workspace path (ex. `~/work`) - optional)*
+  - **update** *(Boolean, Update local install to latest - optional)*
 
 ### ngo(arguments, options)
 returns promise which resolves to [`execa`](https://github.com/sindresorhus/execa) styled object
@@ -39,6 +40,10 @@ returns promise which resolves to [`execa`](https://github.com/sindresorhus/exec
 ```sh
 $ ngo version
 # go version go1.8.3 windows/amd64
+
+# to update the `ngo` install of Go (won't update system version)
+$ ngo-update
+# go version go1.9.4 windows/amd64
 ```
 
 #### programmatic usage
