@@ -30,10 +30,23 @@ function runner (args, opts) {
   if (!args) return Promise.reject(new Error(`No Go command specified`))
   args = Array.isArray(args) ? args : [args]
   let env = opts.env
-  if (env.hasBin) return execa(env.ngoBin, args, opts)
+  let lastDep
+  let run = () => {
+    let go = execa(env.ngoBin, args, opts)
+    if (opts.installDeps === false) return go
+    go.catch((err) => {
+      let dep = (`${err}`.match(/cannot find package "(.+?)"/) || [])[1]
+      if (!dep || lastDep === dep) throw err
+      lastDep = dep
+      let getDep = execa(env.ngoBin, ['get', dep], opts)
+      getDep.then(() => run()).catch(() => { throw err })
+    })
+    return go
+  }
+  if (env.hasBin) return run()
   return getGo(env.version, env.GOROOT).then(() => {
     env.hasBin = true
-    return execa(env.ngoBin, args, opts)
+    return run()
   })
 }
 

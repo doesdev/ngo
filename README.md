@@ -4,6 +4,11 @@
 
 Will download latest binaries locally if Go isn't already in PATH
 
+### BONUS
+
+If you run a command and it fails with "cannot find package..." we'll try to install
+said package(s). YAYS. :relieved:
+
 ## local install
 
 ```sh
@@ -15,24 +20,6 @@ $ npm install --save ngo
 ```sh
 $ npm install --global ngo
 ```
-
-## api
-
-### require('ngo')(opts)
-accepts `opts` as below, returns `ngo` function which executes Go commands
-- **options** *(Object - optional)*
-  - **useLocal** *(Boolean, use locally downloaded Go binaries - optional)*
-  - **env** *(Object, environment vars to set for the Go command - optional)*
-  - **goRoot** *(String, Go root path (ex. `/usr/local/go`) - optional)*
-  - **goPath** *(String, Go workspace path (ex. `~/work`) - optional)*
-  - **update** *(Boolean, Update local install to latest - optional)*
-
-### ngo(arguments, options)
-returns promise which resolves to [`execa`](https://github.com/sindresorhus/execa) styled object
-- **arguments** *(Array | String, argument(s) to call with `go` command - required)*
-- **options** *(Object - optional)*
- - same options as [`child_process.spawn`](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options)
- - additonal options available same as [`execa`](https://github.com/sindresorhus/execa#options)
 
 ## usage
 
@@ -55,15 +42,34 @@ const ngo = require('ngo')(goOpts)
 
 ngo('version').then(console.log).catch(console.error)
 /* {
-  stdout: 'go version go1.8.3 windows/amd64',
-  stderr: '',
-  code: 0,
-  failed: false,
-  killed: false,
-  signal: null,
-  cmd: 'C:\\Go\\bin\\go version'
+ stdout: 'go version go1.8.3 windows/amd64',
+ stderr: '',
+ code: 0,
+ failed: false,
+ killed: false,
+ signal: null,
+ cmd: 'C:\\Go\\bin\\go version'
 } */
 ```
+
+## api
+
+### require('ngo')(opts)
+accepts `opts` as below, returns `ngo` function which executes Go commands
+- **options** *[Object - optional]*
+  - **useLocal** *[Boolean `false`] - use locally downloaded Go binaries)*
+  - **update** *[Boolean `false`] - update local install to latest*
+  - **installDeps** *[Boolean `true`] - attempt to install missing packages*
+  - **env** *[Object] - environment vars to set for the Go command*
+  - **goRoot** *[String] - Go root path (ex. `/usr/local/go`)*
+  - **goPath** *[String] - Go workspace path (ex. `~/work`)*
+
+### ngo(arguments, options)
+returns promise which resolves to [`execa`](https://github.com/sindresorhus/execa) styled object
+- **arguments** *[Array | String - required] - argument(s) to call with `go` command*
+- **options** *[Object - optional]*
+ - same options as [`child_process.spawn`](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options)
+ - additonal options available same as [`execa`](https://github.com/sindresorhus/execa#options)
 
 ## License
 
