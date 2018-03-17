@@ -39,7 +39,7 @@ function runner (args, opts) {
       if (!dep || lastDep === dep) return Promise.reject(err)
       lastDep = dep
       let getDep = execa(env.ngoBin, ['get', dep], opts)
-      getDep.then(() => run()).catch(() => { throw err })
+      return getDep.then(() => run()).catch(() => Promise.reject(err))
     })
     return go
   }

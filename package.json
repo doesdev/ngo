@@ -1,6 +1,6 @@
 {
   "name": "ngo",
-  "version": "2.3.2",
+  "version": "2.3.3",
   "description": "Run Go commands, whether your Go env is in place or not",
   "main": "index.js",
   "files": [
