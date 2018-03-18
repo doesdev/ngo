@@ -1,5 +1,7 @@
 #! /usr/bin/env node
 'use strict'
 
-const ngo = require('./index.js')({update: true})
-ngo().then((r) => console.log(r.stdout || r.stdout)).catch(console.error)
+const go = require('./index.js')({update: true})()
+go.stdout.pipe(process.stdout)
+go.stderr.pipe(process.stderr)
+go.catch(() => {})

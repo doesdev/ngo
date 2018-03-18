@@ -36,7 +36,7 @@ function runner (args, opts) {
     if (opts.installDeps === false) return go
     go.catch((err) => {
       let dep = (`${err}`.match(/cannot find package "(.+?)"/) || [])[1]
-      if (!dep || lastDep === dep) return Promise.reject(err)
+      if (!dep || lastDep === dep) return
       lastDep = dep
       let getDep = execa(env.ngoBin, ['get', dep], opts)
       return getDep.then(() => run()).catch(() => Promise.reject(err))
