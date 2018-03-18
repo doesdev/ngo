@@ -42,3 +42,11 @@ jspm_packages
 vendor/go
 vendor/*.zip
 vendor/*.tar.gz
+
+# Anything other than gitkeep in vendor dirs
+vendor/gopath/bin/*
+!vendor/gopath/bin/.gitkeep
+vendor/gopath/pkg/*
+!vendor/gopath/pkg/.gitkeep
+vendor/gopath/src/*
+!vendor/gopath/src/.gitkeep

@@ -54,8 +54,8 @@ ngo('version').then(console.log).catch(console.error)
 
 ## api
 
-### require('ngo')(opts)
-accepts `opts` as below, returns `ngo` function which executes Go commands
+### const ngo = require('ngo')(opts)
+accepts `opts` as below, returns `ngo` function which executes Go commands,
 - **options** *[Object - optional]*
   - **useLocal** *[Boolean `false`] - use locally downloaded Go binaries)*
   - **update** *[Boolean `false`] - update local install to latest*
@@ -70,6 +70,9 @@ returns promise which resolves to [`execa`](https://github.com/sindresorhus/exec
 - **options** *[Object - optional]*
  - same options as [`child_process.spawn`](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options)
  - additonal options available same as [`execa`](https://github.com/sindresorhus/execa#options)
+
+### ngo.env
+this is a copy of ngo's `process.env` with the Go environment variables added to it
 
 ## License
 

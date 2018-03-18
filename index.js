@@ -22,10 +22,12 @@ module.exports = (opts = {}) => {
   env.ngoBin = path.join(goRoot, 'bin', 'go')
   try { env.hasBin = exists(path.join(goRoot, 'bin')) } catch (ex) {}
   if (opts.update) delete env.hasBin
-  return (args, cmdOpts = {}) => {
+  let ngoRunner = (args, cmdOpts = {}) => {
     if (opts.update) args = args || ['version']
     return runner(args, Object.assign({}, cmdOpts, {env}))
   }
+  ngoRunner.env = env
+  return ngoRunner
 }
 
 function runner (args, opts) {
