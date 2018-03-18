@@ -2,6 +2,11 @@
 'use strict'
 
 const go = require('./index.js')({update: true})()
-go.stdout.pipe(process.stdout)
-go.stderr.pipe(process.stderr)
-go.catch(() => {})
+if (go.stdout && go.sterr) {
+  go.stdout.pipe(process.stdout)
+  go.stderr.pipe(process.stderr)
+  go.catch(() => {})
+} else {
+  go.then((r) => console.log(r.stdout))
+  go.catch((err) => console.error(err.message || err))
+}
