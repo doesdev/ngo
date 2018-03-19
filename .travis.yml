@@ -20,6 +20,7 @@ before_install:
   - npm --version
   - md5sum package-lock.json > package-lock.json.md5
 install: |
+  npm i codecov;
   if [[ ${FRESH_DEPS} == "true" ]]; then
     npm install --no-shrinkwrap --prefer-online;
   else
