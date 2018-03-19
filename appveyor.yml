@@ -33,4 +33,4 @@ install:
   - if %configuration% == FreshDeps (npm install --no-shrinkwrap --prefer-online)
   - if %configuration% == LockedDeps (npm install --prefer-offline)
 test_script:
-  - npm run test-win
+  - npm test
