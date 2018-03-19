@@ -2,6 +2,9 @@
   "name": "ngo",
   "version": "2.4.4",
   "description": "Run Go commands, whether your Go env is in place or not",
+  "engines": {
+    "node": ">=6.0.0"
+  },
   "main": "index.js",
   "files": [
     "index.js",
