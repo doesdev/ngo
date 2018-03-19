@@ -20,7 +20,6 @@ before_install:
   - npm --version
   - md5sum package-lock.json > package-lock.json.md5
 install: |
-  npm i codecov --no-shrinkwrap;
   if [[ ${FRESH_DEPS} == "true" ]]; then
     npm install --no-shrinkwrap --prefer-online;
   else
@@ -30,4 +29,6 @@ install: |
       exit 1;
     fi
   fi
-after_success: npx codecov --file=./coverage/lcov.info
+after_success:
+  - npm i codecov --no-shrinkwrap;
+  - npx codecov --file=./coverage/lcov.info
