@@ -7,7 +7,10 @@ import test from 'ava'
 import ngo from './index'
 const goBinPath = path.resolve(__dirname, '..', 'vendor', 'go')
 
-test.before(() => remove(goBinPath).then(ngo({useLocal: true})('version')))
+test.before(() => {
+  let finish = ngo({useLocal: true})('version')
+  return remove(goBinPath).then(finish).catch(finish)
+})
 
 test(`go('version') returns version`, async (assert) => {
   let go = ngo({useLocal: true})
