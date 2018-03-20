@@ -8,7 +8,8 @@ const vendor = path.resolve(__dirname, 'vendor')
 const defGoRoot = path.join(vendor, 'go')
 const defGoPath = path.join(vendor, 'gopath')
 const defGoBin = path.join(defGoPath, 'bin')
-const arch = process.arch.match(/64/) ? 'amd64' : '386'
+const cpu64 = (process.env.PROCESSOR_ARCHITECTURE || '').indexOf('64') !== -1
+const arch = (cpu64 || process.arch.indexOf('64') !== -1) ? 'amd64' : '386'
 
 // exports
 module.exports = (opts = {}) => {
