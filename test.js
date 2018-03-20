@@ -12,24 +12,24 @@ test.before(() => {
   return remove(goBinPath).then(finish).catch(finish)
 })
 
-test(`go('version') returns version`, async (assert) => {
-  let go = ngo({useLocal: true})
-  assert.regex((await go('version')).stdout, /^go version/)
-})
-
-test(`go(['version']) returns version`, async (assert) => {
-  let go = ngo({useLocal: true})
-  assert.regex((await go(['version'])).stdout, /^go version/)
-})
-
-test(`go(['get', '-u', 'golang.org/x/lint/golint']) works`, async (assert) => {
-  let go = ngo({useLocal: true})
-  await assert.notThrows(go(['get', '-u', 'golang.org/x/lint/golint']))
-})
-
 test(`go.env returns environment`, (assert) => {
   let go = ngo({useLocal: true})
   assert.truthy(go.env.GOPATH)
   assert.truthy(go.env.GOROOT)
   assert.truthy(go.env.GOBIN)
+})
+
+test.serial(`go('version') returns version`, async (assert) => {
+  let go = ngo({useLocal: true})
+  assert.regex((await go('version')).stdout, /^go version/)
+})
+
+test.serial(`go(['version']) returns version`, async (assert) => {
+  let go = ngo({useLocal: true})
+  assert.regex((await go(['version'])).stdout, /^go version/)
+})
+
+test.serial(`go(['get', 'somepackage']) works`, async (assert) => {
+  let go = ngo({useLocal: true})
+  await assert.notThrows(go(['get', '-u', 'golang.org/x/lint/golint']))
 })
