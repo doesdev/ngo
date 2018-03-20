@@ -8,7 +8,7 @@ import ngo from './index'
 const goBinPath = path.resolve(__dirname, '..', 'vendor', 'go')
 
 test.before(() => {
-  let finish = ngo({useLocal: true})('version')
+  let finish = () => ngo({useLocal: true})('version')
   return remove(goBinPath).then(finish).catch(finish)
 })
 
