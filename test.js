@@ -1,22 +1,13 @@
 'use strict'
 
 // setup
-import { promisify } from 'util'
 import path from 'path'
 import { remove } from 'fs-extra'
 import test from 'ava'
 import ngo from './index'
-const rmdir = promisify(remove)
 const goBinPath = path.resolve(__dirname, '..', 'vendor', 'go')
 
-test.before(async () => {
-  try {
-    await rmdir(goBinPath)
-  } catch (ex) {
-    console.log(ex)
-  }
-  await ngo({useLocal: true})('version')
-})
+test.before(() => remove(goBinPath).then(ngo({useLocal: true})('version')))
 
 test(`go('version') returns version`, async (assert) => {
   let go = ngo({useLocal: true})
