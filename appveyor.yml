@@ -12,6 +12,8 @@ configuration:
 environment:
   TSD_GITHUB_TOKEN:
     secure: M2aeRAmpcwy5eOC0ODWCWIk+st2GTsMlHzArP5/gEPJOylFkNV95sHo2Z4mfcd0h
+  GITHUB_OAUTH_TOKEN:
+    secure: M2aeRAmpcwy5eOC0ODWCWIk+st2GTsMlHzArP5/gEPJOylFkNV95sHo2Z4mfcd0h
   matrix:
     - nodejs_version: 9
       platform: x64

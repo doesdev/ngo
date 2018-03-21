@@ -41,8 +41,8 @@
   "homepage": "https://github.com/doesdev/ngo#readme",
   "dependencies": {
     "execa": "^0.10.0",
-    "go-bin": "^1.1.0",
-    "go-versions": "^1.1.0"
+    "go-bin": "^1.2.0",
+    "go-versions": "^1.2.0"
   },
   "devDependencies": {
     "ava": "^0.25.0",
