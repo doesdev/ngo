@@ -23,21 +23,23 @@ module.exports = (opts = {}) => {
   env.ngoBin = path.join(goRoot, 'bin', 'go')
   try { env.hasBin = exists(path.join(goRoot, 'bin')) } catch (ex) {}
   if (opts.update) delete env.hasBin
-  let ngoRunner = (args, cmdOpts = {}) => {
+  let ngoRunner = (args, cmdOpts = {}, binary) => {
     if (opts.update) args = args || ['version']
-    return runner(args, Object.assign({}, cmdOpts, {env}))
+    return runner(args, Object.assign({}, cmdOpts, {env}), binary)
   }
   ngoRunner.env = env
+  ngoRunner.bin = (binary) => (args, opts) => ngoRunner(args, opts, binary)
   return ngoRunner
 }
 
-function runner (args, opts) {
+function runner (args, opts, binary) {
   if (!args) return Promise.reject(new Error(`No Go command specified`))
   args = Array.isArray(args) ? args : [args]
   let env = opts.env
+  if (binary && env.GOBIN) binary = path.join(env.GOBIN, binary)
   let lastDep
   let run = () => {
-    let go = execa(env.ngoBin, args, opts)
+    let go = execa(binary || env.ngoBin, args, opts)
     if (opts.installDeps === false) return go
     go.catch((err) => {
       let dep = (`${err}`.match(/cannot find package "(.+?)"/) || [])[1]
