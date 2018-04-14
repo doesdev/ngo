@@ -1,6 +1,6 @@
 {
   "name": "ngo",
-  "version": "2.4.5",
+  "version": "2.4.6",
   "description": "Run Go commands from Node or CLI, Go env not required",
   "engines": {
     "node": ">=6.0.0"
@@ -10,14 +10,17 @@
     "index.js",
     "cli.js",
     "cli-update.js",
+    "cli-binary.js",
     "vendor/gopath"
   ],
   "scripts": {
-    "test": "ava --verbose"
+    "test": "ava --verbose",
+    "changelog": "auto-changelog && git add CHANGELOG.md"
   },
   "bin": {
     "ngo": "cli.js",
-    "ngo-update": "cli-update.js"
+    "ngo-update": "cli-update.js",
+    "ngo-binary": "cli-binary.js"
   },
   "repository": {
     "type": "git",
@@ -45,6 +48,7 @@
     "go-versions": "^1.2.0"
   },
   "devDependencies": {
+    "auto-changelog": "^1.4.6",
     "ava": "^0.25.0",
     "fs-extra": "^5.0.0"
   }
