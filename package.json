@@ -1,6 +1,6 @@
 {
   "name": "ngo",
-  "version": "2.4.6",
+  "version": "2.4.7",
   "description": "Run Go commands from Node or CLI, Go env not required",
   "engines": {
     "node": ">=6.0.0"
@@ -11,7 +11,9 @@
     "cli.js",
     "cli-update.js",
     "cli-binary.js",
-    "vendor/gopath"
+    "vendor/gopath/bin/.gitkeep",
+    "vendor/gopath/pkg/.gitkeep",
+    "vendor/gopath/src/.gitkeep"
   ],
   "scripts": {
     "test": "ava --verbose",
