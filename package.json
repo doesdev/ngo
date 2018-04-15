@@ -1,6 +1,6 @@
 {
   "name": "ngo",
-  "version": "2.4.7",
+  "version": "2.4.8",
   "description": "Run Go commands from Node or CLI, Go env not required",
   "engines": {
     "node": ">=6.0.0"

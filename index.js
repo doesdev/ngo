@@ -7,7 +7,6 @@ const exists = require('fs').existsSync
 const vendor = path.resolve(__dirname, 'vendor')
 const defGoRoot = path.join(vendor, 'go')
 const defGoPath = path.join(vendor, 'gopath')
-const defGoBin = path.join(defGoPath, 'bin')
 const cpu64 = (process.env.PROCESSOR_ARCHITECTURE || '').indexOf('64') !== -1
 const arch = (cpu64 || process.arch.indexOf('64') !== -1) ? 'amd64' : '386'
 
@@ -18,7 +17,7 @@ module.exports = (opts = {}) => {
   if (opts.useLocal) goRoot = defGoRoot
   env.GOROOT = goRoot = goRoot || env.GOROOT || defGoRoot
   env.GOPATH = goPath = goPath || env.GOPATH || defGoPath
-  env.GOBIN = goBin = goBin || env.GOBIN || defGoBin
+  env.GOBIN = goBin = goBin || env.GOBIN || path.join(goPath, 'bin')
   env.GOARCH = goArch = goArch || env.GOARCH || arch
   env.ngoBin = path.join(goRoot, 'bin', 'go')
   try { env.hasBin = exists(path.join(goRoot, 'bin')) } catch (ex) {}
