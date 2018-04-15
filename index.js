@@ -32,7 +32,7 @@ module.exports = (opts = {}) => {
 }
 
 function runner (args, opts, binary) {
-  if (!args) return Promise.reject(new Error(`No Go command specified`))
+  if (!args) args = binary ? [] : ['help']
   args = Array.isArray(args) ? args : [args]
   let env = opts.env
   if (binary && env.GOBIN) binary = path.join(env.GOBIN, binary)
