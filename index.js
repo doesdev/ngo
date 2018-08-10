@@ -19,6 +19,9 @@ module.exports = (opts = {}) => {
   env.GOPATH = goPath = goPath || env.GOPATH || defGoPath
   env.GOBIN = goBin = goBin || env.GOBIN || path.join(goPath, 'bin')
   env.GOARCH = goArch = goArch || env.GOARCH || arch
+  for (let p of ['path', 'Path', 'PATH']) {
+    if (env[p]) env[p] += `${path.delimiter}${env.GOBIN}`
+  }
   env.ngoBin = path.join(goRoot, 'bin', 'go')
   try { env.hasBin = exists(path.join(goRoot, 'bin')) } catch (ex) {}
   if (opts.update) delete env.hasBin

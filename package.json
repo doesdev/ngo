@@ -1,6 +1,6 @@
 {
   "name": "ngo",
-  "version": "2.4.9",
+  "version": "2.5.0",
   "description": "Run Go commands from Node or CLI, Go env not required",
   "engines": {
     "node": ">=6.0.0"
@@ -46,12 +46,12 @@
   "homepage": "https://github.com/doesdev/ngo#readme",
   "dependencies": {
     "execa": "^0.10.0",
-    "go-bin": "^1.2.0",
-    "go-versions": "^1.2.0"
+    "go-bin": "^1.2.1",
+    "go-versions": "^1.3.0"
   },
   "devDependencies": {
-    "auto-changelog": "^1.4.6",
+    "auto-changelog": "^1.8.0",
     "ava": "^0.25.0",
-    "fs-extra": "^5.0.0"
+    "fs-extra": "^7.0.0"
   }
 }
