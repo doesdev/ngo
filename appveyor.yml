@@ -13,10 +13,10 @@ environment:
     secure: M2aeRAmpcwy5eOC0ODWCWIk+st2GTsMlHzArP5/gEPJOylFkNV95sHo2Z4mfcd0h
   matrix:
     - nodejs_version: 12
-      platform: x64
-    - nodejs_version: 12
-      platform: x86
     - nodejs_version: 10
+      platform: x64
+    - nodejs_version: 10
+      platform: x86
     - nodejs_version: 8
 matrix:
   fast_finish: true
