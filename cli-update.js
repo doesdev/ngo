@@ -1,7 +1,7 @@
 #! /usr/bin/env node
 'use strict'
 
-const go = require('./index.js')({update: true})()
+const go = require('./index.js')({ update: true })()
 if (go.stdout && go.stderr) {
   go.stdout.pipe(process.stdout)
   go.stderr.pipe(process.stderr)
