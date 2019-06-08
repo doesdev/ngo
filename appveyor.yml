@@ -1,11 +1,3 @@
-build: off
-cache:
-  - '%APPDATA%\npm-cache'
-clone_depth: 1
-skip_branch_with_pr: true
-skip_commits:
-  files:
-    - '**/*.md'
 environment:
   TSD_GITHUB_TOKEN:
     secure: M2aeRAmpcwy5eOC0ODWCWIk+st2GTsMlHzArP5/gEPJOylFkNV95sHo2Z4mfcd0h
@@ -15,14 +7,7 @@ environment:
     - nodejs_version: 12
     - nodejs_version: 10
     - nodejs_version: 8
-matrix:
-  fast_finish: true
 install:
   - ps: Install-Product node $env:nodejs_version
-  - npm install --global npm@5.6.0
-  - npm --version
-  - git config core.symlinks true
-  - git reset --hard
-  - npm install --no-shrinkwrap --prefer-online
 test_script:
   - npm test
