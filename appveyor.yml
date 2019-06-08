@@ -5,7 +5,7 @@ environment:
   GITHUB_OAUTH_TOKEN:
     secure: M2aeRAmpcwy5eOC0ODWCWIk+st2GTsMlHzArP5/gEPJOylFkNV95sHo2Z4mfcd0h
   matrix:
-    - nodejs_version: 12
+    # - nodejs_version: 12 # AppVeyor doesn't support 12, 1.5 months after release
     - nodejs_version: 10
     - nodejs_version: 8
 install:
