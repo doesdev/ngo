@@ -81,7 +81,7 @@ function runner (args, opts, binary) {
 function getGo (version, dir) {
   const gv = require('go-versions')
   const gb = require('go-bin')
-  const versionErr = () => new Error(`No matching version found`)
+  const versionErr = () => new Error('No matching version found')
 
   return gv().then((versions) => {
     if (version && versions.indexOf(version) === -1) throw versionErr()

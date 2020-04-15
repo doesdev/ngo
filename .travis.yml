@@ -1,12 +1,5 @@
 language: node_js
 node_js:
+  - 13
   - 12
   - 10
-  - 8
-cache:
-  directories:
-    - $HOME/.npm
-before_install:
-  - npm install --global npm@5.6.0
-  - npm --version
-install: npm install --no-shrinkwrap --prefer-online
