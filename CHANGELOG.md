@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [2.6.2](https://github.com/doesdev/ngo/compare/2.6.1...2.6.2)
+
+> 15 April 2020
+
+- Update dependencies
+
 #### [2.6.1](https://github.com/doesdev/ngo/compare/2.6.0...2.6.1)
 
 > 14 July 2019
