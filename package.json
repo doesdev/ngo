@@ -1,6 +1,6 @@
 {
   "name": "ngo",
-  "version": "2.6.2",
+  "version": "2.7.0",
   "description": "Run Go commands from Node or CLI, Go env not required",
   "engines": {
     "node": ">=6.0.0"
@@ -21,6 +21,7 @@
   "bin": {
     "ngo": "cli.js",
     "ngo-update": "cli-update.js",
+    "ngo-version": "cli-update.js",
     "ngo-binary": "cli-binary.js"
   },
   "repository": {
@@ -44,12 +45,13 @@
   },
   "homepage": "http://github.com/doesdev/ngo#readme",
   "dependencies": {
-    "execa": "^4.0.0",
+    "execa": "^5.1.1",
     "go-bin": "^1.4.0",
-    "go-versions": "^1.3.2"
+    "go-versions": "^1.3.2",
+    "semver": "^7.3.5"
   },
   "devDependencies": {
-    "fs-extra": "^9.0.0",
-    "mvt": "^4.1.0"
+    "fs-extra": "^10.0.0",
+    "mvt": "^4.1.1"
   }
 }

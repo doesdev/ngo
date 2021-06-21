@@ -1,7 +1,11 @@
 #! /usr/bin/env node
 'use strict'
 
-const go = require('./index.js')({ update: true })()
+const semver = require('semver')
+const maybeVersion = process.argv.slice(2)[0]
+const version = semver.valid(maybeVersion) ? maybeVersion : undefined
+
+const go = require('./index.js')({ update: true, env: { version } })()
 if (go.stdout && go.stderr) {
   go.stdout.pipe(process.stdout)
   go.stderr.pipe(process.stderr)

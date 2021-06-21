@@ -32,9 +32,13 @@ $ ngo version
 $ ngo-update
 # go version go1.9.4 windows/amd64
 
+# to set the `ngo` install of Go to a specific version (won't update system version)
+$ ngo-version 1.12.0
+# go version go1.12.0 windows/amd64
+
 # to run a `go get` installed binary use this bs
 $ ngo-binary golint test/fixtures/errors.go
-# test\fixtures\errors.go:13:5: error var unexp should have name of the form errFoo 
+# test\fixtures\errors.go:13:5: error var unexp should have name of the form errFoo
 ```
 
 #### programmatic usage
